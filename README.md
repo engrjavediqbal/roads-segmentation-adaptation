@@ -19,11 +19,11 @@ This repository contains the source code for Leveraging Topology for Road Segmen
 ### Requirements:
 The code is tested in Ubuntu 16.04. with the following libraries.
 
--Python: 3.6
--numpy: 1.18.5
--opencv-python: 4.4.0.42
--torch: 1.5.0
--torchvision: 0.6.0
+- Python: 3.6
+- numpy: 1.18.5
+- opencv-python: 4.4.0.42
+- torch: 1.5.0
+- torchvision: 0.6.0
 
 For GPU usage, the maximum GPU memory consumption is about 10.8 GB in a single GTX 1080ti.
 
@@ -40,20 +40,22 @@ We assume you are working in roadAdapt.
 - Put source-trained model in the "models/" folder
 
 ### Usage
-0. Set the PYTHONPATH environment variable:
-~~~~
+
 cd roadAdapt
 
+
+1. Evaluate source only or final model:
+
 ~~~~
-1. Self-training for GTA2Cityscapes:
-- MLSL(SISC):
+python evaluate.py
 ~~~~
 
-python issegm/solve_AO.py --num-round 6 
+
+2. Adapt model SpaceNet to DeepGlobe
+
 ~~~~
-- MLSL(SISC-PWL):
+python road_adapt.py
 ~~~~
-python issegm1/solve_AO.py --num-round 6 
 
 
 
@@ -68,13 +70,13 @@ A leaderboard for state-of-the-art methods is available
 ### Citation:
 If you found this useful, please cite our [paper](https://arxiv.org/pdf/2309.15625.pdf). 
 
->@inproceedings{iqbal2020roadDa,  
->&nbsp; &nbsp; &nbsp;    title={Leveraging Topology for Domain Adaptive Road Segmentation in Satellite and Aerial Imagery},  
->&nbsp; &nbsp; &nbsp;     author={Javed Iqbal, Aliza Masood, Waqas Sultani and Mohsen Ali},  
->&nbsp; &nbsp; &nbsp;     booktitle={---}, 
->&nbsp; &nbsp; &nbsp;     pages={--}, 
->&nbsp; &nbsp; &nbsp;     year={2023} 
->}
+@inproceedings{iqbal2020roadDa,  
+&nbsp; &nbsp; &nbsp;    title={Leveraging Topology for Domain Adaptive Road Segmentation in Satellite and Aerial Imagery},  
+&nbsp; &nbsp; &nbsp;     author={Javed Iqbal, Aliza Masood, Waqas Sultani and Mohsen Ali},  
+&nbsp; &nbsp; &nbsp;     booktitle={---}, 
+&nbsp; &nbsp; &nbsp;     pages={--}, 
+&nbsp; &nbsp; &nbsp;     year={2023} 
+}
 
 
 Contact: javed.iqbal@itu.edu.pk
