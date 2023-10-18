@@ -32,12 +32,13 @@ For GPU usage, the maximum GPU memory consumption is about 10.8 GB in a single G
 We assume you are working in roadAdapt.
 
 0. Datasets:
-- Download [SpaceNet-V3](link) dataset. 
-- Download [DeepGlobe](link).
+- Download [SpaceNet-V3](https://spacenet.ai/spacenet-roads-dataset/) dataset. 
+- Download [DeepGlobe](https://www.kaggle.com/datasets/balraj98/deepglobe-road-extraction-dataset/download?datasetVersionNumber=2).
 - Put downloaded data in the "data" folder.
-1. Source pre-trained models:
-- Download [source model](link) trained on SpaceNet dataset.
-- Put source-trained model in the "models/" folder
+1. Source pre-trained and adapted models:
+- Download [source model](https://drive.google.com/file/d/1DoryyVrjNFxxC91XO6ZDmEk3RWrCjbax/view?usp=sharing) trained on SpaceNet dataset.
+- SpaceNet to DeepGlobe adapted model [Ours](https://drive.google.com/file/d/1KenlUfdVFBzOta01-B_ZvPFTbic5lR4m/view?usp=sharing)
+- Put the source-trained model in the "models/" folder
 
 ### Usage
 
@@ -54,14 +55,14 @@ python evaluate.py
 2. Adapt model SpaceNet to DeepGlobe
 
 ~~~~
-python road_adapt.py
+python train_st.py
 ~~~~
 
 
 
 ### Note
 - This code is partially based on [DLinkNet](https://github.com/ShenweiXie/D-LinkNet).
-- Due to the randomness, the self-training-based domain adaptation results may slightly vary in each run.
+- Due to the randomness, the self-training-based domain adaptation results may vary slightly in each run.
 
 
 ### Results
