@@ -74,3 +74,4 @@ Contact: javed.iqbal@itu.edu.pk
 ### Note
 - This code is partially based on [DLinkNet](https://github.com/ShenweiXie/D-LinkNet).
 - Due to the randomness, the self-training-based domain adaptation results may vary slightly in each run.
+- feel free to contact
