@@ -34,7 +34,7 @@ We assume you are working in roadAdapt.
 1. Datasets:
 - Download [SpaceNet-V3](https://spacenet.ai/spacenet-roads-dataset/) dataset. 
 - Download [DeepGlobe](https://www.kaggle.com/datasets/balraj98/deepglobe-road-extraction-dataset/download?datasetVersionNumber=2).
-- Put downloaded data in the "data" folder.
+- Put downloaded data in the "data" folder. The source and target dataset folder are inside the data and the training and test/val splits for both datasets are provided. 
 2. Source pre-trained and adapted models:
 - Download [source model](https://drive.google.com/file/d/1DoryyVrjNFxxC91XO6ZDmEk3RWrCjbax/view?usp=sharing) trained on SpaceNet dataset.
 - SpaceNet to DeepGlobe adapted model [Ours](https://drive.google.com/file/d/1KenlUfdVFBzOta01-B_ZvPFTbic5lR4m/view?usp=sharing).
