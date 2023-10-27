@@ -62,11 +62,9 @@ python train_st.py
 ### Citation:
 If you found this useful, please cite our [paper](https://arxiv.org/pdf/2309.15625.pdf). 
 
-@inproceedings{iqbal2020roadDa,  
+@inproceedings{iqbal2023roadDa,  
 &nbsp; &nbsp; &nbsp;    title={Leveraging Topology for Domain Adaptive Road Segmentation in Satellite and Aerial Imagery},  
 &nbsp; &nbsp; &nbsp;     author={Javed Iqbal, Aliza Masood, Waqas Sultani and Mohsen Ali},  
-&nbsp; &nbsp; &nbsp;     booktitle={---}, 
-&nbsp; &nbsp; &nbsp;     pages={--}, 
 &nbsp; &nbsp; &nbsp;     year={2023} 
 }
 
