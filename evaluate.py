@@ -22,7 +22,7 @@ def main(args):
    
     solver = MyFrame_Src(DinkNet34, dice_bce_loss, 0.001, args.mode)
 
-    model_path = args.ROOT + '/weights/' + args.model_name
+    model_path = args.ROOT + args.model_name
 
     solver.src_load(model_path)
     print('testing model: ' + model_path)
@@ -40,21 +40,13 @@ def main(args):
         return np.diag(hist) / (hist.sum(1) + hist.sum(0) - np.diag(hist))
 
     def fast_hist(a, b, n):
-        # print(a)
-        # print(b)
         k = (a >= 0) & (a < n)
         return np.bincount(n * a[k].astype(int) + b[k], minlength=n ** 2).reshape(n, n)
 
     hist = np.zeros((2, 2))    
-    # hist1 = np.zeros((2, 2))  
     data_loader_iter = iter(data_loader)
-    f1_ls = []
     prec = []
     rec = []
-
-    s_f1_ls = []
-    s_prec = []
-    s_rec = []
 
 
     with torch.no_grad():
@@ -95,14 +87,14 @@ if __name__=='__main__':
     ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--ROOT', default=ROOT_DIR, help='Model for upsampling')
-    parser.add_argument('--data_dir_tar', default=ROOT_DIR+'/data/deepGlobe/', help='train or test') 
+    parser.add_argument('--ROOT', default=ROOT_DIR, help='Root directory')
+    parser.add_argument('--data_dir_tar', default=ROOT_DIR+'/data/deepGlobe/', help='Target data directory') 
     parser.add_argument('--mode', default='test', help='train or test')
     parser.add_argument('--gpu', default='0', help='which gpu to use')
-    parser.add_argument('--model_name', default='SkDecoder_FSA_r1_3.pth', help='Upsampling Ratio')  #
-    parser.add_argument('--list_path', default=ROOT_DIR+'/data/deepGlobe/val.txt', help='Point Number')
-    parser.add_argument('--image_size', type=int, default=1024, help='Batch Size during training')
-    parser.add_argument('--batch_size', type=int, default=1, help='Batch Size during training')
+    parser.add_argument('--model_name', default='SkDecoder_FSA_r1_3.pth', help='Testing model name')  #
+    parser.add_argument('--list_path', default=ROOT_DIR+'/data/deepGlobe/val.txt', help='Path to testing list.txt')
+    parser.add_argument('--image_size', type=int, default=1024, help='testing image size')
+    parser.add_argument('--batch_size', type=int, default=1, help='Batch Size during testing')
     args = parser.parse_args()
 
     

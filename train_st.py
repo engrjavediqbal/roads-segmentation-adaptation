@@ -31,8 +31,6 @@ r"""Whether to use shared memory in default_collate"""
  
 np_str_obj_array_pattern = re.compile(r'[SaUO]')
 
-
-# i = cv2.imreda()
  
 error_msg_fmt = "batch must contain tensors, numbers, dicts or lists; found {}"
 
@@ -124,8 +122,8 @@ def adapt_model(args, solver, round, round_folder, mylogs):
             t_img, t_mask,t_ske_mask = next(data_loader_iter_tar)
 
             j += 1
-            # if j%100 == 0:
-            #     print(j)
+            if j%100 == 0:
+                print(j)
 
             solver.set_input(img, mask, ske_mask, t_img, t_mask, t_ske_mask)  
             
@@ -146,7 +144,7 @@ def adapt_model(args, solver, round, round_folder, mylogs):
         print ('********')
         print ('epoch:',epoch)
         print ('train_loss: ',train_epoch_loss)
-        # print ('adv_loss: ',epoch_adv_loss)
+        print ('adv_loss: ',epoch_adv_loss)
         # print ('SHAPE:',SHAPE)
         
         if train_epoch_loss is nan:
@@ -200,7 +198,8 @@ def main(args):
             os.makedirs(round_folder)
         
         print('Generate Pseudo_labels')
-        generate_labels(args, solver, round, round_folder)
+        if round>0:
+            generate_labels(args, solver, round, round_folder)
 
         print('Perform Adaptation')
         solver = adapt_model(args, solver, round, round_folder, mylogs)
@@ -215,7 +214,7 @@ if __name__=='__main__':
     ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--ROOT', default=ROOT_DIR, help='root folder path')
+    parser.add_argument('--ROOT', default=ROOT_DIR, help='Root directory')
     parser.add_argument('--data_dir_src', default=ROOT_DIR+'/data/spaceNet/', help='Source dataset')
     parser.add_argument('--data_dir_tar', default=ROOT_DIR+'/data/deepGlobe/', help='Target dataset') 
     parser.add_argument('--mode', default='train', help='train or test')
@@ -228,7 +227,7 @@ if __name__=='__main__':
     parser.add_argument('--adapt_rounds', type=int, default=2, help='adaptation rounds during training')
     parser.add_argument('--adapt_epochs', type=int, default=3, help='adaptation epochs per round during training')
     parser.add_argument('--src_model', default=ROOT_DIR+'/weights/src_spaceNet.pth', help='Source trained model')
-    parser.add_argument('--adapt_exp', default='spaceNet2ddepGlobe_all', help='Source trained model')
+    parser.add_argument('--adapt_exp', default='spaceNet2ddepGlobe_all_rep', help='Output directory')
     args = parser.parse_args()
 
     

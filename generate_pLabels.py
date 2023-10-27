@@ -3,19 +3,26 @@ import cv2
 from skimage import filters
     
 def assign_labels(pred, pred1, round):    
-    if round == 0:
-        th_ske = [0.08, 0.12]
-        th_rd = [0.7, 0.9]
 
-        th_ske1 = [0.05, 0.1]
-        th_rd1 = [0.6, 0.9]
-    else:
-        # R2 new values
-        th_ske = [0.3, 0.5]
-        th_rd = [0.2, 0.7]
+    th_ske = [0.1, 0.5]
+    th_rd = [0.7, 0.9]
+
+    th_ske1 = [0.05, 0.1]
+    th_rd1 = [0.6, 0.9]
+
+    # if round == 0:
+    #     th_ske = [0.08, 0.12]
+    #     th_rd = [0.7, 0.9]
+
+    #     th_ske1 = [0.05, 0.1]
+    #     th_rd1 = [0.6, 0.9]
+    # else:
+    #     # R2 new values
+    #     th_ske = [0.3, 0.5]
+    #     th_rd = [0.2, 0.7]
         
-        th_ske1 = [0.1, 0.5]
-        th_rd1 = [0.4, 0.7]
+    #     th_ske1 = [0.1, 0.5]
+    #     th_rd1 = [0.4, 0.7]
 
     pred1_ = pred1.copy()
     row, col = np.where((pred1 > th_ske[0]) & (pred1 < th_ske[1]))

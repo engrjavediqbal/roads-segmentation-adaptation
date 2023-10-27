@@ -122,12 +122,7 @@ def default_loader(id, root, split):
         img = cv2.imread(im_path)
         mask = cv2.imread(m_path, cv2.IMREAD_GRAYSCALE)
   
-      # img = cv2.imread(os.path.join(root,'{}_sat.jpg').format(id))
-      # mask = cv2.imread(os.path.join(root,'{}_mask.png').format(id), cv2.IMREAD_GRAYSCALE)
-      # img = randomHueSaturationValue(img,
-      #                               hue_shift_limit=(-30, 30),
-      #                               sat_shift_limit=(-5, 5),
-      #                               val_shift_limit=(-15, 15))
+      
         img, mask = randomCrop(img, mask, (1024, 1024))
     #   img = cv2.resize(img, (0,0), fx=0.75, fy=0.75, interpolation=cv2.INTER_LINEAR)
     #   mask = cv2.resize(mask, (0,0), fx=0.75, fy=0.75, interpolation=cv2.INTER_NEAREST)
@@ -158,31 +153,12 @@ def default_loader(id, root, split):
         img = cv2.imread(im_path)
         mask = cv2.imread(m_path, cv2.IMREAD_GRAYSCALE)
   
-      # img = cv2.imread(os.path.join(root,'{}_sat.jpg').format(id))
-      # mask = cv2.imread(os.path.join(root,'{}_mask.png').format(id), cv2.IMREAD_GRAYSCALE)
-      # img = randomHueSaturationValue(img,
-      #                               hue_shift_limit=(-30, 30),
-      #                               sat_shift_limit=(-5, 5),
-      #                               val_shift_limit=(-15, 15))
+     
         dim = (1280,1280)
-        # img, mask = randomCrop(img, mask, (1024, 1024))
-        # img = cv2.resize(img, dim, interpolation=cv2.INTER_LINEAR)
-        # mask = cv2.resize(mask, dim, interpolation=cv2.INTER_NEAREST)
-
-        # img = cv2.resize(img, (0,0), fx=0.75, fy=0.75, interpolation=cv2.INTER_LINEAR)
-        # mask = cv2.resize(mask, (0,0), fx=0.75, fy=0.75, interpolation=cv2.INTER_NEAREST)
-
-        # img, mask = centerCrop(img, mask, (768, 768))
+       
         img, mask = centerCrop(img, mask, (1024, 1024))
 
-        # img, mask = randomShiftScaleRotate(img, mask,
-        #                                   shift_limit=(-0.1, 0.1),
-        #                                   scale_limit=(-0.1, 0.1),
-        #                                   aspect_limit=(-0.1, 0.1),
-        #                                   rotate_limit=(-0, 0))
-        # img, mask = randomHorizontalFlip(img, mask)
-        # img, mask = randomVerticleFlip(img, mask)
-        # img, mask = randomRotate90(img, mask)
+        
     #   print(mask.shape)
         mask = np.expand_dims(mask, axis=2)
       
@@ -196,27 +172,14 @@ def default_loader(id, root, split):
         im_path = os.path.join(root,'images/{}_sat.jpg').format(id)
         m_path = os.path.join(root,'gt/{}_mask.png').format(id)
 
-        # im_path = os.path.join(root,'images/{}.tiff').format(id)
-        # m_path = os.path.join(root,'gt/{}.tif').format(id)
-
-      # im_path = os.path.join(root,'self_train_ske_hys/ske_pseudo_lbl_r1{}_sat.jpg').format(id)
-      # m_path = os.path.join(root,'{}_mask.png').format(id)
-      # im_path = os.path.join(root,'images/{}.png').format(id)
-      # m_path = os.path.join(root,'gt/{}.png').format(id)
-    #   ske = os.path.join(root,'ske_gt/{}.png').format(id)
+       
         img = cv2.imread(im_path)
         mask = cv2.imread(m_path, cv2.IMREAD_GRAYSCALE)
     #   ske_gt = cv2.imread(ske, cv2.IMREAD_GRAYSCALE)
         # img, mask = centerCrop(img, mask, (1024, 1024))
         mask = np.expand_dims(mask, axis=2)
         size_ = (1024,1024)
-        # size_ = (768, 768)
-        # size_ = (1280,1280)
-        
-        # size_ = (1504,1504)
-        # size_ = (1920, 1920)
-        # size_ = (1760, 1760) # best for mDataset
-        # size_ = (2080, 2080)
+       
         img = cv2.resize(img, size_, interpolation=cv2.INTER_LINEAR)
         mask = cv2.resize(mask, size_, interpolation=cv2.INTER_NEAREST)
         mask = np.expand_dims(mask, axis=2)
@@ -251,11 +214,6 @@ class ImageFolder(data.Dataset):
         mask = torch.Tensor(mask)
         # ske_mask = torch.Tensor(ske_mask)
        
-        # except:
-        #     return None
-    
-            # print(img.shape)
-            # print(mask.shape)
         return img, mask, im_id
 
     # def __iter__(self):
